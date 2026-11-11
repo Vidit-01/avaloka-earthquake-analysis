@@ -1,6 +1,6 @@
 # Why did the 2025 M5.5+ earthquake count spike in July?
 
-A global catalog can have a busy month because activity rose across many regions, or because many events were concentrated near one rupture. I used Avaloka to explore the USGS catalog and asked how much of July's peak came from a short window near Kamchatka.
+A global catalog can have a busy month because activity rose across many regions, or because many events were concentrated near one rupture. I used Avaloka to compute the monthly counts and investigated how much of July’s peak came from a short window near Kamchatka.
 
 ## Findings
 
@@ -24,6 +24,10 @@ A global catalog can have a busy month because activity rose across many regions
 | October | 52 |
 | November | 40 |
 | December | 39 |
+
+## Avaloka workflow
+
+The working prompt was: “Create a table and a bar chart of earthquake counts by month. Parse the time column as UTC. Group by UTC month (YYYY-MM) and count distinct id in each group. Return exactly one row per month with columns month and event_count, sorted by month. Use the full dataset.” Avaloka returned all 12 rows, and each count matched the independent computation. A combined aggregation and distance prompt failed its output validation, so the 500 km calculation below comes from the separate verification script.
 
 ## Method and limits
 
